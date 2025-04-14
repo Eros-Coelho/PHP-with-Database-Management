@@ -14,3 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 }
 
 ?>
+
+<html>
+    <head>
+        <h1>Search for Appliance</h1>
+    </head>
+
+    <body>
+        
+    <a href="index.html">Return Home</a>
+    </body>
+</html>

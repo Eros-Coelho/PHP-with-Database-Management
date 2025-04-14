@@ -14,3 +14,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 
 ?>
+
+<html>
+    <head>
+        <h1>Update Details</h1>
+    </head>
+
+    <body>
+
+    <a href="index.html">Return Home</a>
+
+    </body>
+</html>

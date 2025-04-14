@@ -14,3 +14,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 
 ?>
+
+<html>
+    <head>
+        <h1>Delete Appliance Details</h1>
+    </head>
+
+    <body>
+        
+    <a href="index.html">Return Home</a>
+    </body>
+</html>

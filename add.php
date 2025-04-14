@@ -119,5 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <button type="submit">Add to Inventory</button>
 
 </form>
+
+<a href="index.html">Return Home</a>
+
 </body>
 </html>
