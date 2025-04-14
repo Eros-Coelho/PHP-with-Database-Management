@@ -1,58 +1,20 @@
-
+<!DOCTYPE html>
 <html>
-    <form action="register.php" method="POST">
 
-        <h3>Please enter your personal details:</h3>
-<label for="userID">Please enter your User ID:</label>
-<input type="text" name="user-id"> </br>
+<head>
+    <title>Welcome to your Inventory!</title>
+</head>
 
- <label for="fName">Please enter your first name:</label>
-<input type="text" name="fName"> </br>
+<body>
+    <h1>Inventory System</h1>
+    <p>Please select the action you would like to take:</p>
 
-<label for="lName">Please enter your last name:</label>
-<input type="text" name="lName"> </br>
-
-<label for="address">Please enter your address:</label>
-<input type="text" name="address"> </br>
-
-<label for="eir_code">Please enter your Eir Code:</label>
-<input type="text" name="eir-code"> </br>
-
-<label for="phone">Please enter your mobile phone:</label>
-<input type="text" name="phone"> </br>
-
-<label for="email">Please enter your email:</label>
-<input type="text" name="email"> </br>
-
-<h3>Please enter the appliance's details:</h3>
-    <!-- labels and user inputs for variables -->
-    <label for="appliance-id">Please enter your the appliance ID:</label>
-    <input type="text" name="appliance-id"> </br>
-
-    <!-- keeping selection of appliance type as options rather than input text -->
-    <label for="appliance-type">Please choose an appliance type:</label>
-<select id="appliance" name="appliance-type">
-    <option value="" selected disabled>--Select an appliance--</option>
-    <option value="fridge">Fridge</option>
-    <option value="washing-machine">Washing Machine</option>
-    <option value="oven">Oven</option>
-    <option value="kettle">Kettle</option>
-    </select></br>
-
-<label for="brand">Please enter your the appliance's brand:</label>
-<input type="text" name="brand"> </br>
-<label for="model">Please enter the appliance's model:</label>
-<input type="text" name="model"></br>
-<label for="serial-number">Please enter the serial number:</label>
-<input type="text" name="serial-number"></br>
-<label for="purchase-date">Please enter the purchase date:</label>
-<input type="text" name="purchase-date">(DD/MM/YYYY format)</br>
-<label for="warranty-expiration">Please enter the Warranty Experiation Date:</label>
-<input type="text" name="warranty-expiration">(DD/MM/YYYY format)</br>
-<label for="appliance-cost">Please enter your the appliance cost:</label>
-<input type="text" name="appliance-cost"> </br>
-
-    <button type="submit">Add to Inventory</button>
-
-    </form>
+    <ul>
+        <li><a href="add.php">Add a new appliance</a></li>
+        <li><a href="search.php">Search for an appliance</a></li>
+        <li><a href="update.php">Update details of your applliance</a></li>
+        <li><a href="delete.php">Delete an appliance</a></li>
+    </ul>
+</body>
+    
 </html>
