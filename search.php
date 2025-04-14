@@ -9,7 +9,7 @@ if (!$con){
     echo "Error: Could not connect to Database";
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'GET'){
 
 }
 

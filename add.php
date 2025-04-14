@@ -53,7 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 ?>
 
 <html>
-<form action="register.php" method="POST">
+    <head>
+        <h1>Register a New Appliance</h1>
+    </head>
+
+    <body>
+<form action="add.php" method="POST">
 
 <h3>Please enter your personal details:</h3>
 
@@ -114,4 +119,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     <button type="submit">Add to Inventory</button>
 
 </form>
+</body>
 </html>
