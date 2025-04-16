@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
     <title>Delete Appliance Details</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>

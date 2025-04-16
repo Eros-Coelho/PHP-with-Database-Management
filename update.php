@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
     <title>Update Details</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>

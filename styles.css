@@ -1,0 +1,45 @@
+/* Existing Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center; /* Center the content horizontally */
+}
+
+h1 {
+    color: #333;
+    margin-top: 50px;
+}
+
+/* Add the new link styles below the existing ones */
+
+/* Link List Styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 20px 0;
+}
+
+/* Link Styles */
+a {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ff1111;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 10px 0; /* Red margin to make it look like buttons */
+    transition: background-color 0.3s ease;
+}
+
+a:hover {
+    background-color: #760101; /* Darker blue on hover */
+}
+
+a:active {
+    background-color: #800101; /* Even darker on click */
+}

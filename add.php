@@ -57,10 +57,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
     <title>Register a New Appliance</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <form action="add.php" method="POST">
+        <h1>Register a New Appliance</h1>
 
         <h3>Please enter your personal details:</h3>
 
