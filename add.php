@@ -5,11 +5,11 @@ ini_set('display_errors', 1);
 $con = mysqli_connect("localhost", "root", "", "assignment2");
 // connecting to the apache server and the databse "assignment2"
 
-if (!$con){
+if (!$con) {
     echo "Error: Could not connect to Database";
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // variables for user table
     $user_id = $_POST['user-id'];
@@ -36,91 +36,94 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $resultUser = mysqli_query($con, $queryUser);
     $resultAppliance = mysqli_query($con, $queryAppliance);
 
-    if ($resultUser && $resultAppliance){
+    if ($resultUser && $resultAppliance) {
         echo "Data inserted successfully";
     } else {
         echo "Error, please try again later";
     }
 
     // makes sure no fields are left blank. If so, quit the program
-    if (empty($user_id) || empty($first_name) || empty($last_name) || empty($address) || empty($eir_code) || empty($phone) || empty($email) || 
-    empty($appliance_id) || empty($brand) || empty($model) || empty($serial_number) || empty($purchase_date) || empty($warranty_expiration) || empty($appliance_cost) || empty($appliance_type)) {
-    echo "All fields are required! Please fill in all the fields.";
-    exit(); 
-}
-
+    if (
+        empty($user_id) || empty($first_name) || empty($last_name) || empty($address) || empty($eir_code) || empty($phone) || empty($email) ||
+        empty($appliance_id) || empty($brand) || empty($model) || empty($serial_number) || empty($purchase_date) || empty($warranty_expiration) || empty($appliance_cost) || empty($appliance_type)
+    ) {
+        echo "All fields are required! Please fill in all the fields.";
+        exit();
+    }
 }
 ?>
 
 <html>
-    <head>
-        <h1>Register a New Appliance</h1>
-    </head>
 
-    <body>
-<form action="add.php" method="POST">
+<head>
+    <title>Register a New Appliance</title>
+</head>
 
-<h3>Please enter your personal details:</h3>
+<body>
+    <form action="add.php" method="POST">
 
-    <!-- User details -->
-    <label for="user-id">User ID:</label>
-    <input type="text" name="user-id" value="<?php echo isset($_POST['user-id']) ? $_POST['user-id'] : ''; ?>"> </br>
+        <h3>Please enter your personal details:</h3>
 
-    <label for="fName">First Name:</label>
-    <input type="text" name="fName" value="<?php echo isset($_POST['fName']) ? $_POST['fName'] : ''; ?>"> </br>
+        <!-- User details -->
+        <label for="user-id">User ID:</label>
+        <input type="text" name="user-id" value="<?php echo isset($_POST['user-id']) ? $_POST['user-id'] : ''; ?>"> </br>
 
-    <label for="lName">Last Name:</label>
-    <input type="text" name="lName" value="<?php echo isset($_POST['lName']) ? $_POST['lName'] : ''; ?>"> </br>
+        <label for="fName">First Name:</label>
+        <input type="text" name="fName" value="<?php echo isset($_POST['fName']) ? $_POST['fName'] : ''; ?>"> </br>
 
-    <label for="address">Address:</label>
-    <input type="text" name="address" value="<?php echo isset($_POST['address']) ? $_POST['address'] : ''; ?>"> </br>
+        <label for="lName">Last Name:</label>
+        <input type="text" name="lName" value="<?php echo isset($_POST['lName']) ? $_POST['lName'] : ''; ?>"> </br>
 
-    <label for="eir-code">Eir Code:</label>
-    <input type="text" name="eir-code" value="<?php echo isset($_POST['eir-code']) ? $_POST['eir-code'] : ''; ?>"> </br>
+        <label for="address">Address:</label>
+        <input type="text" name="address" value="<?php echo isset($_POST['address']) ? $_POST['address'] : ''; ?>"> </br>
 
-    <label for="phone">Phone:</label>
-    <input type="text" name="phone" value="<?php echo isset($_POST['phone']) ? $_POST['phone'] : ''; ?>"> </br>
+        <label for="eir-code">Eir Code:</label>
+        <input type="text" name="eir-code" value="<?php echo isset($_POST['eir-code']) ? $_POST['eir-code'] : ''; ?>"> </br>
 
-    <label for="email">Email:</label>
-    <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"> </br>
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" value="<?php echo isset($_POST['phone']) ? $_POST['phone'] : ''; ?>"> </br>
 
-    <!-- Appliance details -->
-     <h3>Please enter the appliance's details:</h3>
-    <label for="appliance-id">Appliance ID:</label>
-    <input type="text" name="appliance-id" value="<?php echo isset($_POST['appliance-id']) ? $_POST['appliance-id'] : ''; ?>"> </br>
+        <label for="email">Email:</label>
+        <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"> </br>
 
-    <label for="appliance-type">Appliance Type:</label>
-    <select name="appliance-type">
-        <option value="" selected disabled>--Select an appliance--</option>
-        <option value="fridge" <?php echo isset($_POST['appliance-type']) && $_POST['appliance-type'] == 'fridge' ? 'selected' : ''; ?>>Fridge</option>
-        <option value="washing-machine" <?php echo isset($_POST['appliance-type']) && $_POST['appliance-type'] == 'washing-machine' ? 'selected' : ''; ?>>Washing Machine</option>
-        <option value="oven" <?php echo isset($_POST['appliance-type']) && $_POST['appliance-type'] == 'oven' ? 'selected' : ''; ?>>Oven</option>
-        <option value="kettle" <?php echo isset($_POST['appliance-type']) && $_POST['appliance-type'] == 'kettle' ? 'selected' : ''; ?>>Kettle</option>
-    </select></br>
+        <!-- Appliance details -->
+        <h3>Please enter the appliance's details:</h3>
+        <label for="appliance-id">Appliance ID:</label>
+        <input type="text" name="appliance-id" value="<?php echo isset($_POST['appliance-id']) ? $_POST['appliance-id'] : ''; ?>"> </br>
 
-    <label for="brand">Brand:</label>
-    <input type="text" name="brand" value="<?php echo isset($_POST['brand']) ? $_POST['brand'] : ''; ?>"> </br>
+        <label for="appliance-type">Appliance Type:</label>
+        <select name="appliance-type">
+            <option value="" selected disabled>--Select an appliance--</option>
+            <option value="fridge" <?php echo isset($_POST['appliance-type']) && $_POST['appliance-type'] == 'fridge' ? 'selected' : ''; ?>>Fridge</option>
+            <option value="washing-machine" <?php echo isset($_POST['appliance-type']) && $_POST['appliance-type'] == 'washing-machine' ? 'selected' : ''; ?>>Washing Machine</option>
+            <option value="oven" <?php echo isset($_POST['appliance-type']) && $_POST['appliance-type'] == 'oven' ? 'selected' : ''; ?>>Oven</option>
+            <option value="kettle" <?php echo isset($_POST['appliance-type']) && $_POST['appliance-type'] == 'kettle' ? 'selected' : ''; ?>>Kettle</option>
+        </select></br>
 
-    <label for="model">Model:</label>
-    <input type="text" name="model" value="<?php echo isset($_POST['model']) ? $_POST['model'] : ''; ?>"></br>
+        <label for="brand">Brand:</label>
+        <input type="text" name="brand" value="<?php echo isset($_POST['brand']) ? $_POST['brand'] : ''; ?>"> </br>
 
-    <label for="serial-number">Serial Number:</label>
-    <input type="text" name="serial-number" value="<?php echo isset($_POST['serial-number']) ? $_POST['serial-number'] : ''; ?>"></br>
+        <label for="model">Model:</label>
+        <input type="text" name="model" value="<?php echo isset($_POST['model']) ? $_POST['model'] : ''; ?>"></br>
 
-    <label for="purchase-date">Purchase Date:</label>
-    <input type="text" name="purchase-date" value="<?php echo isset($_POST['purchase-date']) ? $_POST['purchase-date'] : ''; ?>"></br>
+        <label for="serial-number">Serial Number:</label>
+        <input type="text" name="serial-number" value="<?php echo isset($_POST['serial-number']) ? $_POST['serial-number'] : ''; ?>"></br>
 
-    <label for="warranty-expiration">Warranty Expiration:</label>
-    <input type="text" name="warranty-expiration" value="<?php echo isset($_POST['warranty-expiration']) ? $_POST['warranty-expiration'] : ''; ?>"></br>
+        <label for="purchase-date">Purchase Date:</label>
+        <input type="text" name="purchase-date" value="<?php echo isset($_POST['purchase-date']) ? $_POST['purchase-date'] : ''; ?>"></br>
 
-    <label for="appliance-cost">Appliance Cost:</label>
-    <input type="text" name="appliance-cost" value="<?php echo isset($_POST['appliance-cost']) ? $_POST['appliance-cost'] : ''; ?>"> </br>
+        <label for="warranty-expiration">Warranty Expiration:</label>
+        <input type="text" name="warranty-expiration" value="<?php echo isset($_POST['warranty-expiration']) ? $_POST['warranty-expiration'] : ''; ?>"></br>
 
-    <button type="submit">Add to Inventory</button>
+        <label for="appliance-cost">Appliance Cost:</label>
+        <input type="text" name="appliance-cost" value="<?php echo isset($_POST['appliance-cost']) ? $_POST['appliance-cost'] : ''; ?>"> </br>
 
-</form>
+        <button type="submit">Add to Inventory</button>
 
-<a href="index.html">Return Home</a>
+    </form>
+
+    <a href="index.html">Return Home</a>
 
 </body>
+
 </html>

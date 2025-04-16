@@ -5,24 +5,25 @@ ini_set('display_errors', 1);
 $con = mysqli_connect("localhost", "root", "", "assignment2");
 // connecting to the apache server and the databse "assignment2"
 
-if (!$con){
+if (!$con) {
     echo "Error: Could not connect to Database";
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 ?>
 
 <html>
-    <head>
-        <h1>Update Details</h1>
-    </head>
 
-    <body>
+<head>
+    <title>Update Details</title>
+</head>
+
+<body>
 
     <a href="index.html">Return Home</a>
 
-    </body>
+</body>
+
 </html>
