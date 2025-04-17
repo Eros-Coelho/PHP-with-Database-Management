@@ -14,18 +14,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_POST['user-id'];
     $serial_number = $_POST['serial-number'];
 
-    $queryDelete = "DELETE FROM Appliances WHERE serial_number = '$serial_number'";
-    $queryDeleteUser = "DELETE FROM User WHERE UserID = '$user_id'";
+    // Prepare and execute deletion from Appliances
+    $stmt = $con->prepare("DELETE FROM Appliances WHERE serial_number = ?");
+    $stmt->bind_param("s", $serial_number);
+    $stmt->execute();
 
-    $resultDelete = mysqli_query($con, $queryDelete);
-    $resultDeleteUser = mysqli_query($con, $queryDeleteUser);
+    // Prepare and execute deletion from User
+    $stmtUser = $con->prepare("DELETE FROM User WHERE userID = ?");
+    $stmtUser->bind_param("s", $user_id);
+    $stmtUser->execute();
 
-    if ($resultDelete && $resultDeleteUser && mysqli_affected_rows($con) > 0) {
-        echo "Appliance Deleted Successfully!";
+    // Check if any rows were deleted
+    if ($stmt->affected_rows > 0 || $stmtUser->affected_rows > 0) {
+        echo "Appliance Deleted Successfully along with User Details!";
     } else {
-        echo "Error! No appliance found with that serial number";
+        echo "Error! No appliance or user found with that information.";
     }
+
+    $stmt->close();
+    $stmtUser->close();
 }
+
 ?>
 
 <html>
