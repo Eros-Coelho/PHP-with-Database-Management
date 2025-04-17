@@ -1,9 +1,12 @@
 <?php
+// prints all errors on screen
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+// connects the php with the mysql database
 $con = mysqli_connect("localhost", "root", "", "assignment2");
 
+// if cannot find connection, kill the program
 if (!$con) {
     die("Error: Could not connect to Database");
 }
@@ -36,17 +39,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         empty($appliance_id) || empty($brand) || empty($model) || empty($serial_number) || empty($purchase_date) || empty($warranty_expiration) || empty($appliance_cost) || empty($appliance_type)
     ) {
         $error = "All fields are required! Please fill in all the fields.";
+        // makes sure the email input by the user is valid
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Please enter a valid email address.";
+        // if all fields are correct, only then will the program continue and insert the values into the tables
     } else {
-        // Insert into User table
+        // insert into User table
         $stateUser = $con->prepare("INSERT INTO User (userID, first_name, last_name, address, eir_code, phone, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stateUser->bind_param("issssis", $user_id, $first_name, $last_name, $address, $eir_code, $phone, $email);
 
-        // Insert into Appliances table
+        // insert into Appliances table
         $stateAppliance = $con->prepare("INSERT INTO Appliances (applianceID, brand, model, serial_number, purchase_date, warranty_expiration, appliance_cost, appliance_type, userID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stateAppliance->bind_param("ississdsi", $appliance_id, $brand, $model, $serial_number, $purchase_date, $warranty_expiration, $appliance_cost, $appliance_type, $user_id);
 
+        // checks if queries were executed properly
         if ($stateUser->execute() && $stateAppliance->execute()) {
             $success = "Data inserted successfully!";
         } else {
@@ -72,6 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="add.php" method="POST">
         <h1>Register a New Appliance</h1>
 
+        <!-- if there are errors, colour red, if not, colour green -->
         <?php
         if (!empty($error)) {
             echo "<p style='color: red;'>$error</p>";
@@ -83,6 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <h3>Please enter your personal details:</h3>
 
+        <!-- html form and sanitising the inputs -->
+         <!-- when the user leaves a field blank and comes back, whatever they typed before doesn't go away -->
         <label for="user-id">User ID:</label>
         <input type="text" name="user-id" value="<?php echo htmlspecialchars($_POST['user-id'] ?? ''); ?>"> </br>
 
