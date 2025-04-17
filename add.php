@@ -33,16 +33,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $appliance_cost = isset($_POST['appliance-cost']) ? (float)$_POST['appliance-cost'] : '';
     $appliance_type = isset($_POST['appliance-type']) ? $_POST['appliance-type'] : '';
 
-//  makes sure all fields are valid
+    //  makes sure all fields are valid
     if (
         empty($user_id) || empty($first_name) || empty($last_name) || empty($address) || empty($eir_code) || empty($phone) || empty($email) ||
-        empty($appliance_id) || empty($brand) || empty($model) || empty($serial_number) || empty($purchase_date) || empty($warranty_expiration) || empty($appliance_cost) || empty($appliance_type)
+        empty($appliance_id) || empty($brand) || empty($model) || empty($serial_number) || empty($purchase_date) || empty($warranty_expiration) ||
+        empty($appliance_cost) || empty($appliance_type)
     ) {
         $error = "All fields are required! Please fill in all the fields.";
         // makes sure the email input by the user is valid
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Please enter a valid email address.";
-        // if all fields are correct, only then will the program continue and insert the values into the tables
+        // if all fields are correct and not empty, only then will the program continue and insert the values into the tables
     } else {
         // insert into User table
         $stateUser = $con->prepare("INSERT INTO User (userID, first_name, last_name, address, eir_code, phone, email) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -91,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h3>Please enter your personal details:</h3>
 
         <!-- html form and sanitising the inputs -->
-         <!-- when the user leaves a field blank and comes back, whatever they typed before doesn't go away -->
+        <!-- when the user leaves a field blank and comes back, whatever they typed before doesn't go away -->
         <label for="user-id">User ID:</label>
         <input type="text" name="user-id" value="<?php echo htmlspecialchars($_POST['user-id'] ?? ''); ?>"> </br>
 
@@ -121,10 +122,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="appliance-type">Appliance Type:</label>
         <select name="appliance-type">
             <option value="" disabled <?php echo empty($_POST['appliance-type']) ? 'selected' : ''; ?>>--Select an appliance--</option>
-            <option value="fridge" <?php echo (($_POST['appliance-type'] ?? '') === 'fridge') ? 'selected' : ''; ?>>Fridge</option>
-            <option value="washing-machine" <?php echo (($_POST['appliance-type'] ?? '') === 'washing-machine') ? 'selected' : ''; ?>>Washing Machine</option>
-            <option value="oven" <?php echo (($_POST['appliance-type'] ?? '') === 'oven') ? 'selected' : ''; ?>>Oven</option>
-            <option value="kettle" <?php echo (($_POST['appliance-type'] ?? '') === 'kettle') ? 'selected' : ''; ?>>Kettle</option>
+            <option value="fridge" <?php echo (($_POST['appliance-type'] ?? '') === 'Fridge') ? 'selected' : ''; ?>>Fridge</option>
+            <option value="Microwave" <?php echo (($_POST['appliance-type'] ?? '') === 'Microwave') ? 'selected' : ''; ?>>Microwave</option>
+            <option value="oven" <?php echo (($_POST['appliance-type'] ?? '') === 'Oven') ? 'selected' : ''; ?>>Oven</option>
+            <option value="kettle" <?php echo (($_POST['appliance-type'] ?? '') === 'Kettle') ? 'selected' : ''; ?>>Kettle</option>
         </select> </br>
 
         <label for="brand">Brand:</label>
