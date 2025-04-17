@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['serial-number'])) {
 
         $appliance_data = $resultSearch->fetch_assoc();
 
+        echo "<div class='search-result'>";
         echo "<h3>Appliance Details:</h3>";
         echo "Appliance ID: " . $appliance_data['applianceID'] . "<br>";
         echo "Brand: " . $appliance_data['brand'] . "<br>";
@@ -30,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['serial-number'])) {
         echo "Cost: €" . $appliance_data['appliance_cost'] . "<br>";
         echo "Type: " . $appliance_data['appliance_type'] . "<br>";
         echo "Owner ID: " . $appliance_data['userID'] . "<br>";
+        echo "</div>";
     } else {
         echo "Sorry, no appliance with that serial number was found";
     }
@@ -49,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['serial-number'])) {
         <h3>Please enter the serial number of the appliance you are looking for:</h3>
 
         <label for="serial-number">Serial Number:</label>
-        <input type="text" name="serial-number" value="<?php echo isset($_GET['serial-number']) ? $_GET['serial-number'] : ''; ?>">
+        <input type="text" name="serial-number" value="<?php echo isset($_GET['serial-number']) ? $_GET['serial-number'] : ''; ?>"></br>
 
         <button type="submit">Search</button></br>
 
