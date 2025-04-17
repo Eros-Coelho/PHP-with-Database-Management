@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="appliance-cost">Appliance Cost:</label>
         <input type="text" name="appliance-cost" value="<?php echo htmlspecialchars($_POST['appliance-cost'] ?? ''); ?>"> </br>
 
-        <button type="submit">Add to Inventory</button>
+        <button type="submit">Register Appliance</button>
     </form>
 
     <a href="index.html">Return Home</a>
